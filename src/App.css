@@ -1,11 +1,11 @@
-.hello {
+.header {
   text-align: center;
   margin: 20px;
   font-size: 45px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-.hello button {
+.header-button {
   margin-left: 25px;
   margin-right: 25px;
   font-size: 40px;
-  min-width: 50px; }
+  max-width: 50px; }

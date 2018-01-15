@@ -12,7 +12,7 @@ export class AuthorizeState {
      * @type {number}
      * @memberof AuthorizeState
      */
-    uid: number = 0;
+    uid: number = 123123123;
 
     /**
      * If user is authed {true} or not {false}

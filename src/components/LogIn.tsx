@@ -1,28 +1,20 @@
 import * as React from 'react';
 import '../App.css';
-import { Redirect } from 'react-router-dom';
 
 export interface Props {
-    onSighIn?: () => void;
-    onLock?: () => void;
-    authed: boolean;
+    onSighIn: () => void;
+    state: any;
+    // authed: boolean;
 }
 
-function LogIn({ authed, onSighIn, onLock }: Props) {
+function LogIn({ onSighIn, state }: Props) {
 
-    if (!authed) {
-        return (
-            <div className="hello">
-                <div>
-                    <button onClick={onSighIn}>Unlock user</button>
-                </div>
-            </div>
-        );
-
-    }
     return (
-        <Redirect to={{ pathname: '/' }} />
-
+        <div className="header">
+            <div>
+                <button onClick={onSighIn}>Unlock user</button>
+            </div>
+        </div>
     );
 }
 
