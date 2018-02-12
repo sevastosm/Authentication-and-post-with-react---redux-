@@ -1,0 +1,5 @@
+export enum PostsActionType {
+    GETALLPOSTS = 'GETALLPOSTS',
+    GETUSERPOSTS = 'GETUSERPOSTS',
+    ADDNEWPOST = 'ADDNEWPOST'
+}

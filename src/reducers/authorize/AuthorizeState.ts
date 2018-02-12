@@ -37,4 +37,9 @@ export class AuthorizeState {
      * @memberof AuthorizeState
      */
     guest: Boolean = false;
+
+    /**
+     * User avatar
+     */
+    useravatar: any;
 }

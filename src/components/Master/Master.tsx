@@ -5,30 +5,21 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-// import { push } from 'react-router-redux';
-
-// - Import material-ui components
-// import Snackbar from 'material-ui/Snackbar';
-// import LinearProgress from 'material-ui/LinearProgress';
-
-// - Import components
-import Home from '../Home';
-import Header from '../../containers/Header';
-// import Signup from 'components/Signup';
+import Landing from '../../containers/Landing';
 import LogIn from '../../containers/LogIn';
-// import Settings from 'components/Settings';
-// import MasterLoading from 'components/MasterLoading';
 
 // - Import master props state
 import { ImMasterProps } from './ImMasterProps';
 import { ImMasterState } from './ImMasterState';
 
-// - Import API
+// - Import Css
+import '../../styles/sass/materialize.css';
+import '../../styles/App.css';
 
 // - Import actions
 import {
     authorizeActions,
-    // postActions,
+    postActions,
     // userActions,
 } from '../../actions';
 
@@ -41,7 +32,8 @@ export class Master extends React.Component<ImMasterProps, ImMasterState> {
         this.state = {
             loading: true,
             authed: false,
-            dataLoaded: true
+            dataLoaded: true,
+            posts: {}
         };
     }
 
@@ -52,6 +44,7 @@ export class Master extends React.Component<ImMasterProps, ImMasterState> {
     }
     componentWillMount() {
         const isauthed = localStorage.getItem('token');
+        this.props.getAllPosts();
         if (isauthed) {
             this.props.loginUser();
         }
@@ -70,33 +63,14 @@ export class Master extends React.Component<ImMasterProps, ImMasterState> {
 
         return (
             <div id="master">
-                <Header />
-                {/* <div className="master__progress" style={{ display: (progress.visible ? 'block' : 'none') }}>
-                    <LinearProgress mode="determinate" value={progress.percent} />
-                </div>
-                <div className="master__loading animate-fading2" 
-                style={{ display: (global.showTopLoading ? 'flex' : 'none') }}>
-                    <div className="title">Loading ... </div>
-                </div>
-                <MasterLoading activeLoading={this.state.loading || !(this.props.loaded || this.props.guest)} 
-            handleLoading={this.handleLoading} /> */}
-
-                {/* {(!this.state.loading && (this.props.loaded || this.props.guest)) */}
                 {(this.state.loading)
                     ?
                     (<Switch>
                         /* tslint:disable */
-                        <Route exact path="/" render={() => <Home state={' '} />} />
+                        <Route exact path="/" render={() => <Landing />} />
                         <Route path="/login" render={() => !this.props.authed ? <LogIn state={' '} /> : <Redirect to={{ pathname: '/', }} />} />
                     </Switch>) : ''
                 }
-
-                {/* <Snackbar
-                    open={this.props.global.messageOpen}
-                    message={this.props.global.message}
-                    autoHideDuration={4000}
-                    style={{ left: '1%', transform: 'none' }}
-                /> */}
             </div>
 
         );
@@ -107,13 +81,12 @@ export class Master extends React.Component<ImMasterProps, ImMasterState> {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 
     return {
-
         loginUser: () => {
-            dispatch(authorizeActions.SigninUser('seb@mail.com', '1q2w3e'));
+            dispatch(authorizeActions.SigninValiduser());
         },
-        // logout: () => {
-        //     dispatch(authorizeActions.logout());
-        // }
+        getAllPosts: () => {
+            dispatch(postActions.GetAllPosts());
+        }
     };
 
 };
@@ -123,11 +96,11 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
  * @param {object} state
  */
 const mapStateToProps = (state: any) => {
-    // const { authorize, global, user, post, comment, imageGallery, vote, notify, circle } = state;
-    const { authorize } = state;
-
+    // Passing  aplication state to nested components as props
+    const { authorize, posts } = state;
     return {
         authed: authorize.authed,
+        posts: posts
     };
 
 };

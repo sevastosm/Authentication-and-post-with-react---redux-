@@ -1,0 +1,19 @@
+.header {
+  text-align: center;
+  margin: 20px;
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+.header button {
+  margin-left: 25px;
+  margin-right: 25px; }
+
+h2 {
+  font-size: 15px; }
+
+a {
+  color: inherit; }
+
+img {
+  width: 100px;
+  height: 100px; }

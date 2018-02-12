@@ -8,14 +8,7 @@ import { createLogger } from 'redux-logger';
 // - Import reducers
 import {
     authorizeReducer,
-    // imageGalleryReducer,
-    // postReducer,
-    // commentReducer,
-    // voteReducer,
-    // globalReducer,
-    // userReducer,
-    // circleReducer,
-    // notificationReducer
+    PostsReducer,
 } from '../reducers';
 
 declare const window: any;
@@ -29,15 +22,7 @@ const logger = createLogger();
 // - Reducers
 let reducer = redux.combineReducers({
     authorize: authorizeReducer,
-    // imageGallery: imageGalleryReducer,
-    // post: postReducer,
-    // circle: circleReducer,
-    // comment: commentReducer,
-    // vote: voteReducer,
-    // router: routerReducer,
-    // user: userReducer,
-    // notify: notificationReducer,
-    // global: globalReducer
+    posts: PostsReducer,
 });
 
 // - initial state

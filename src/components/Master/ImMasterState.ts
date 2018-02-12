@@ -21,4 +21,6 @@ export interface ImMasterState {
      * @memberof IMasterState
      */
     dataLoaded: Boolean;
+
+    posts: {};
 }

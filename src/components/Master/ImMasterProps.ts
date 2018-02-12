@@ -97,4 +97,7 @@ export interface ImMasterProps {
      * @memberof IMasterProps
      */
   uid: string;
+
+  getAllPosts: Function;
+  
 }

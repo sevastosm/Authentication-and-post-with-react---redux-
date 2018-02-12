@@ -1,5 +1,4 @@
 import * as React from 'react';
-import '../App.css';
 import { NavLink } from 'react-router-dom';
 // import store from '../store/configureStore';
 
@@ -9,18 +8,19 @@ export interface Props {
     // authed: boolean;
 }
 
-function Header({ onSignOut , state }: Props) {
+function Header({ onSignOut, state }: Props) {
     return (
         <div className="header">
-            <div style={{float: 'right' }} >
-                {!state ?
-                    <NavLink to="/login">Log In</NavLink>
-                    : <button onClick={onSignOut}>Log out</button>}
-              
+            <div>
+                {state.authorize.authed ? <span style={{ float: 'right' }}>Welcome : {state.authorize.uid}</span> : ''}
+                <h1 style={{ float: 'left' }}>Greeka social</h1>
+                <br />
             </div>
-              <br />
-                <span>Header section</span>
-            <hr/>
+            <div style={{ float: 'right' }} >
+                {!state.authorize.authed ?
+                    <span className="btn" onClick={onSignOut}><NavLink to="/login">Log In</NavLink></span>
+                    : <span className="btn" onClick={onSignOut}>Log out</span>}
+            </div>
         </div>
     );
 }

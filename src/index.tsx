@@ -7,7 +7,7 @@ import Master from './components/Master/Master';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router >
       <div>
         <Master />
       </div>
