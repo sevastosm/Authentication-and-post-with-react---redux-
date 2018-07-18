@@ -13,7 +13,7 @@ function Header({ onSignOut, state }: Props) {
         <div className="header">
             <div>
                 {state.authorize.authed ? <span style={{ float: 'right' }}>Welcome : {state.authorize.uid}</span> : ''}
-                <h1 style={{ float: 'left' }}>Greeka social</h1>
+                <h1 style={{ float: 'left' }}>My social app</h1>
                 <br />
             </div>
             <div style={{ float: 'right' }} >
